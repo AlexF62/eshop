@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styles from './Header.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import { BiMenuAltRight } from 'react-icons/bi';
-import { BiMenuAltLeft } from 'react-icons/bi';
+
 import { FaTimes } from 'react-icons/fa';
 
 const logo = (
@@ -25,6 +25,8 @@ const cart = (
         </Link>
     </span>
 );
+
+const activeLink = ({ isActive }) => (isActive ? `${styles.active}` : '');
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -63,10 +65,14 @@ const Header = () => {
                                 <FaTimes size={22} onClick={hideMenu} />
                             </li>
                             <li>
-                                <Link to='/'>Home</Link>
+                                <NavLink to='/' className={activeLink}>
+                                    Home
+                                </NavLink>
                             </li>
                             <li>
-                                <Link to='/contact'>Contact Us</Link>
+                                <NavLink to='/contact' className={activeLink}>
+                                    Contact Us
+                                </NavLink>
                             </li>
                         </ul>
                         <div
@@ -74,9 +80,15 @@ const Header = () => {
                             onClick={hideMenu}
                         >
                             <span className={styles.links}>
-                                <Link to='/login'>Login</Link>
-                                <Link to='/register'>Register</Link>
-                                <Link to='/order'>My Orders</Link>
+                                <NavLink to='/login' className={activeLink}>
+                                    Login
+                                </NavLink>
+                                <NavLink to='/register' className={activeLink}>
+                                    Register
+                                </NavLink>
+                                <NavLink to='/order' className={activeLink}>
+                                    My Orders
+                                </NavLink>
                             </span>
                             {cart}
                         </div>

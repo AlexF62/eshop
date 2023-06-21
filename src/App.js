@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 //Components
 import { Footer, Header } from './components';
 //Pages
-import { Home, Contact } from './pages';
+import { Home, Contact, Login, Register, Reset } from './pages';
 
 import './App.css';
 
@@ -14,6 +14,9 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/contact' element={<Contact />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/register' element={<Register />} />
+                    <Route path='/reset' element={<Reset />} />
                 </Routes>
                 <Footer />
             </BrowserRouter>
